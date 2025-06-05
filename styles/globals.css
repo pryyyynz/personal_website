@@ -3,6 +3,18 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* Adds padding to account for the fixed header */
+    -webkit-tap-highlight-color: transparent; /* Removes the tap highlight on mobile */
+  }
+  
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px; /* Slightly smaller base font size on mobile for better fit */
+    }
+  }
+  
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;

@@ -191,16 +191,28 @@ export default function PersonalWebsite() {
 
   const awards = [
     {
-      title: "Best Web Application",
-      organization: "Tech Innovation Awards",
-      year: "2023",
-      description: "Recognized for the development of an innovative healthcare management platform.",
+      title: "Vice Chancellor's Awards, Sadhu TL Vaswani Award for Science",
+      organization: "University of Ghana",
+      year: " April 2024",
+      description: "Recognized for outstanding academic achievement and contributions to the university.",
     },
     {
-      title: "Outstanding Developer",
-      organization: "Developer Community Excellence",
-      year: "2022",
-      description: "Awarded for contributions to open-source projects and community education.",
+      title: "UG Tullow Tertiary Scholarship Scheme",
+      organization: "Tullow Oil Ghana",
+      year: "2021 - 2024",
+      description: "Merit-based scholarship awarded.",
+    },
+    {
+      title: "Academic Excellence Award",
+      organization: "Department of Computer Science",
+      year: "August 2024",
+      description: "Honored for exceptional academic performance in computer science studies.",
+    },
+    {
+      title: "Best Computer Science Student",
+      organization: "School of Physical and Mathematical Sciences",
+      year: "December 2023",
+      description: "Recognized as the top-performing student in the 2022/23 Academic Year.",
     },
   ]
 
@@ -222,9 +234,9 @@ export default function PersonalWebsite() {
 
   const interests = [
     {
-      name: "Photography",
-      icon: "📷",
-      description: "Landscape and street photography enthusiast.",
+      name: "Watching Documentaries",
+      icon: "🎬",
+      description: "Enthusiast of science, history, and educational documentaries.",
     },
     {
       name: "Hiking",
@@ -237,9 +249,9 @@ export default function PersonalWebsite() {
       description: "Science fiction and technical books.",
     },
     {
-      name: "Chess",
-      icon: "♟️",
-      description: "Casual player and puzzle solver.",
+      name: "Watching Football",
+      icon: "⚽",
+      description: "❤️ Barcelona.",
     },
   ]
 
@@ -273,77 +285,122 @@ export default function PersonalWebsite() {
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <div className="mr-4 hidden md:flex">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="hidden font-bold sm:inline-block">Prince Dugboryele</span>
+        <div className="container flex h-14 items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2">
+            <span className="font-bold">Prince Dugboryele</span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <Link href="#about" className="transition-colors hover:text-foreground/80">
+              About
             </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="#about" className="transition-colors hover:text-foreground/80">
-                About
+            <Link href="#resume" className="transition-colors hover:text-foreground/80">
+              Resume
+            </Link>
+            <Link href="#projects" className="transition-colors hover:text-foreground/80">
+              Projects
+            </Link>
+            <Link href="#services" className="transition-colors hover:text-foreground/80">
+              Services
+            </Link>
+            <Link href="#gallery" className="transition-colors hover:text-foreground/80">
+              Gallery
+            </Link>
+            <Link href="#contact" className="transition-colors hover:text-foreground/80">
+              Contact
+            </Link>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="mailto:dugboryeleprince@gmail.com">
+                <Mail className="h-4 w-4" />
               </Link>
-              <Link href="#resume" className="transition-colors hover:text-foreground/80">
-                Resume
-              </Link>
-              <Link href="#projects" className="transition-colors hover:text-foreground/80">
-                Projects
-              </Link>
-              <Link href="#services" className="transition-colors hover:text-foreground/80">
-                Services
-              </Link>
-              <Link href="#gallery" className="transition-colors hover:text-foreground/80">
-                Gallery
-              </Link>
-              <Link href="#contact" className="transition-colors hover:text-foreground/80">
-                Contact
-              </Link>
-            </nav>
+            </Button>
           </div>
-          <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-            <div className="w-full flex-1 md:w-auto md:flex-none">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="mailto:dugboryeleprince@gmail.com">
-                  <Mail className="h-4 w-4" />
-                </Link>
+          
+          {/* Mobile Navigation */}
+          <div className="md:hidden flex items-center">
+            <Button variant="ghost" size="sm" className="mr-2" asChild>
+              <Link href="mailto:dugboryeleprince@gmail.com">
+                <Mail className="h-4 w-4" />
+              </Link>
+            </Button>
+            <div className="relative">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="px-2" 
+                onClick={() => {
+                  const mobileMenu = document.getElementById('mobile-menu');
+                  if (mobileMenu) {
+                    mobileMenu.classList.toggle('hidden');
+                  }
+                }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                  <line x1="4" y1="6" x2="20" y2="6" />
+                  <line x1="4" y1="12" x2="20" y2="12" />
+                  <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
               </Button>
+              <div id="mobile-menu" className="hidden absolute right-0 mt-2 w-48 bg-background/95 backdrop-blur rounded-md shadow-lg py-2 z-50">
+                <Link href="#about" className="block px-4 py-2 text-sm hover:bg-muted">
+                  About
+                </Link>
+                <Link href="#resume" className="block px-4 py-2 text-sm hover:bg-muted">
+                  Resume
+                </Link>
+                <Link href="#projects" className="block px-4 py-2 text-sm hover:bg-muted">
+                  Projects
+                </Link>
+                <Link href="#services" className="block px-4 py-2 text-sm hover:bg-muted">
+                  Services
+                </Link>
+                <Link href="#gallery" className="block px-4 py-2 text-sm hover:bg-muted">
+                  Gallery
+                </Link>
+                <Link href="#contact" className="block px-4 py-2 text-sm hover:bg-muted">
+                  Contact
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="container px-4 py-24 md:py-32">
-        <div className="flex flex-col items-center text-center space-y-8">
-          <Avatar className="h-32 w-32">
+      <section className="container px-4 py-16 md:py-24">
+        <div className="flex flex-col items-center text-center space-y-6 md:space-y-8">
+          <Avatar className="h-24 w-24 md:h-32 md:w-32">
             <AvatarImage src="/images/profile/Prince.png" alt="Prince Dugboryele" />
             <AvatarFallback>PD</AvatarFallback>
           </Avatar>
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+          <div className="space-y-3 md:space-y-4">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
               Prince Kojo Dugboryele
             </h1>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+            <p className="mx-auto max-w-[700px] text-muted-foreground text-sm sm:text-base md:text-xl">
               I was living before I became a developer, you'll see life in my work.
             </p>
           </div>
-          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-center sm:space-x-4 space-y-2 sm:space-y-0 text-sm text-muted-foreground">
             <div className="flex items-center space-x-1">
               <MapPin className="h-4 w-4" />
               <span>Accra, Ghana</span>
             </div>
+            <div className="hidden sm:flex">•</div>
             <div className="flex items-center space-x-1">
               <Calendar className="h-4 w-4" />
               <span>Available for work</span>
             </div>
           </div>
-          <div className="flex space-x-4">
-            <Button asChild>
+          <div className="flex flex-col sm:flex-row w-full sm:w-auto justify-center gap-3 sm:gap-4">
+            <Button className="w-full sm:w-auto" asChild>
               <Link href="#projects">View My Work</Link>
             </Button>
-            <Button variant="outline" asChild>
+            <Button className="w-full sm:w-auto" variant="outline" asChild>
               <Link href="#contact">Get In Touch</Link>
             </Button>
-            <Button variant="secondary" asChild>
+            <Button className="w-full sm:w-auto" variant="secondary" asChild>
               <Link href="/Prince-Kojo-Dugboryele-Resume-.pdf" download>
                 <FileText className="mr-2 h-4 w-4" />
                 Download Resume
@@ -375,19 +432,19 @@ export default function PersonalWebsite() {
       {/* About Section */}
       <section id="about" className="container px-4 py-24">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">About Me</h2>
-          <div className="space-y-6 text-muted-foreground">
-            <p className="text-lg">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">About Me</h2>
+          <div className="space-y-6 text-muted-foreground text-center">
+            <p className="text-lg mx-auto">
               I'm an AI Engineer with a strong foundation in Computer Vision, Large Language Models (LLMs), 
               and Data Science. I specialize in building end-to-end AI solutions—from data preprocessing and model 
               development to deployment and monitoring.
             </p>
-            <p className="text-lg">
+            <p className="text-lg mx-auto">
               With expertise in developing deep learning models and implementing machine learning pipelines, 
               I'm passionate about creating AI systems that solve real-world problems. I'm particularly interested 
               in the intersection of computer vision and natural language processing.
             </p>
-            <p className="text-lg">
+            <p className="text-lg mx-auto">
               When I'm not coding, you'll find me watching documentaries, 
               listening to music, hiking, or simply enjoying quiet moments to 
               stay grounded.
@@ -491,19 +548,19 @@ export default function PersonalWebsite() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="container px-4 py-24">
+      <section id="projects" className="container px-4 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">Featured Projects</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
               Here are some of my recent projects that showcase my skills in web development, design, and
               problem-solving.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden">
+              <Card key={index} className="overflow-hidden flex flex-col">
                 {project.embed ? (
                   <div className="relative overflow-hidden">
                     <Button variant="outline" size="sm" className="absolute top-2 right-2 z-10" asChild>
@@ -629,16 +686,16 @@ export default function PersonalWebsite() {
 
       {/* Awards Section */}
       <section className="container px-4 py-24 bg-muted/50">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">Awards & Recognition</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Recognition received for outstanding work and contributions to the tech community.
+              Academic achievements and recognition received during my educational journey.
             </p>
           </div>
-          <div className="space-y-6">
+          <div className="grid gap-6 md:grid-cols-2">
             {awards.map((award, index) => (
-              <Card key={index}>
+              <Card key={index} className="h-full">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div>
@@ -688,28 +745,28 @@ export default function PersonalWebsite() {
 
 
       {/* Contact Section */}
-      <section id="contact" className="container px-4 py-24">
+      <section id="contact" className="container px-4 py-16 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">Let's Work Together</h2>
-          <p className="text-muted-foreground mb-8 text-lg">
+          <p className="text-muted-foreground mb-8 text-sm sm:text-base md:text-lg">
             I'm always interested in new opportunities and exciting projects. Whether you have a question or just want
             to say hi, I'd love to hear from you!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button size="lg" asChild>
+          <div className="grid grid-cols-1 sm:flex sm:flex-row gap-3 sm:gap-4 justify-center mb-8">
+            <Button className="w-full" size="lg" asChild>
               <Link href="mailto:dugboryeleprince@gmail.com">
                 <Mail className="mr-2 h-4 w-4" />
                 Send Email
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button className="w-full" variant="outline" size="lg" asChild>
               <Link href="https://www.linkedin.com/in/prince-dugboryele-990059215/" target="_blank">
                 <Linkedin className="mr-2 h-4 w-4" />
                 Connect on LinkedIn
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button className="w-full" variant="outline" size="lg" asChild>
               <Link href="https://x.com/pryyyynz" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="mr-2 h-4 w-4">
                   <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5549 21H20.7996L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
@@ -719,9 +776,9 @@ export default function PersonalWebsite() {
             </Button>
           </div>
 
-          <Separator className="my-8" />
+          <Separator className="my-6 md:my-8" />
 
-          <div className="flex justify-center space-x-6 text-sm text-muted-foreground">
+          <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-6 text-sm text-muted-foreground">
             <Link href="mailto:dugboryeleprince@gmail.com" className="hover:text-foreground transition-colors">
               dugboryeleprince@gmail.com
             </Link>
@@ -740,9 +797,9 @@ export default function PersonalWebsite() {
 
       {/* Footer */}
       <footer className="border-t py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-            <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+        <div className="container flex items-center justify-center gap-4 md:h-24">
+          <div className="flex flex-col items-center gap-4 px-8">
+            <p className="text-center text-sm leading-loose text-muted-foreground">
               Built with ❤️ in Ghana © {new Date().getFullYear()} Prince Dugboryele.
             </p>
           </div>
