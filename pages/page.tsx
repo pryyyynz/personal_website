@@ -3,6 +3,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
+
+interface Project {
+  title: string
+  description: string
+  image?: string
+  tags: string[]
+  github?: string
+  live?: string
+  embed?: boolean
+}
 import {
   Github,
   Linkedin,
@@ -19,6 +29,16 @@ import {
   GraduationCap,
   Award,
   Mic,
+  Brain,
+  Database,
+  Cpu,
+  BarChartHorizontal,
+  Network,
+  Bot,
+  LineChart,
+  Cloud,
+  Globe,
+  SearchCode
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -26,106 +46,92 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 
 export default function PersonalWebsite() {
-  const projects = [
+  const projects: Project[] = [
     {
-      title: "E-Commerce Platform",
+      title: "Health Analysis Dashboard",
       description:
-        "A full-stack e-commerce solution built with Next.js, featuring user authentication, payment processing, and admin dashboard.",
+        "An interactive Power BI dashboard analyzing health data with custom visualizations and advanced analytics to identify key trends and insights.",
       image: "/placeholder.svg?height=200&width=300",
-      tags: ["Next.js", "TypeScript", "Stripe", "Prisma"],
-      github: "#",
-      live: "#",
+      tags: ["Power BI", "Data Analysis", "Healthcare", "Data Visualization"],
+      live: "https://app.powerbi.com/reportEmbed?reportId=42ae3b64-3dc7-4ec2-b2b0-635b3372ec10&autoAuth=true&ctid=afb58802-ff7a-4bb1-ab21-367ff2ecfc8b&actionBarEnabled=true",
+      embed: true,
     },
     {
-      title: "Task Management App",
+      title: "Multi AI System",
       description:
-        "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      image: "/placeholder.svg?height=200&width=300",
-      tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-      github: "#",
-      live: "#",
+        "Multi AI Assistant is your comprehensive Ghanaian AI Hub, designed to provide valuable information and tools tailored to the Ghanaian context.",
+      image: "/images/gallery/multi.png",
+      tags: ["FastAPI", "Groq", "Chatbot", "Next.js"],
+      github: "https://github.com/pryyyynz/multi-ai-assistant",
+      live: "https://services.multi-ai.software/",
     },
     {
-      title: "Weather Dashboard",
+      title: "Vis3D",
       description:
-        "A beautiful weather dashboard with location-based forecasts, interactive maps, and detailed weather analytics.",
-      image: "/placeholder.svg?height=200&width=300",
-      tags: ["Vue.js", "D3.js", "OpenWeather API", "Tailwind"],
-      github: "#",
-      live: "#",
+        "A web-based 3D visualization tool that leverages AI to create immersive experiences from images, enhancing understanding of spatial data.",
+      image: "/images/gallery/vision.png",
+      tags: ["MiDas", "Three.js", "Tensorflow.js", "FastAPI"],
+      github: "https://github.com/pryyyynz/Vis3D-ui",
+      live: "https://vision.multi-ai.software/",
     },
   ]
 
   const photos = [
-    "/placeholder.svg?height=300&width=300",
-    "/placeholder.svg?height=300&width=300",
-    "/placeholder.svg?height=300&width=300",
-    "/placeholder.svg?height=300&width=300",
-    "/placeholder.svg?height=300&width=300",
-    "/placeholder.svg?height=300&width=300",
+    "/images/gallery/008C4A3A-CB97-4575-981A-292E0174C95F_1_105_c.jpeg",
+    "/images/gallery/E4387186-F3B4-44BB-8CD6-79A6F49B36C4_1_105_c.jpeg",
+    "/images/gallery/F555F7D2-2BD3-4B88-A212-0CAD97821C12_1_105_c.jpeg",
   ]
 
   const skills = [
-    { name: "Frontend Development", icon: Code, description: "React, Next.js, Vue.js, TypeScript" },
-    { name: "Backend Development", icon: Zap, description: "Node.js, Python, PostgreSQL, MongoDB" },
-    { name: "UI/UX Design", icon: Palette, description: "Figma, Adobe Creative Suite, Prototyping" },
-    { name: "Team Leadership", icon: Users, description: "Project Management, Mentoring, Agile" },
+    { name: "Machine Learning", icon: Brain, description: "Computer Vision, NLP, Deep Learning, PyTorch, TensorFlow" },
+    { name: "LLM Engineering", icon: Cpu, description: "GPT, BERT, Llama, Fine-tuning, Prompt Engineering" },
+    { name: "Data Science", icon: BarChartHorizontal, description: "Data Analysis, Feature Engineering, Statistical Modeling" },
+    { name: "MLOps & Deployment", icon: Network, description: "Docker, Kubernetes, CI/CD, Model Monitoring" },
+    { name: "Python Development", icon: Code, description: "FastAPI, Flask, NumPy, Pandas, Scikit-Learn" },
+    { name: "Big Data", icon: Database, description: "Spark, Hadoop, SQL, Data Pipelines, ETL" },
   ]
 
   const experiences = [
     {
-      title: "Senior Frontend Developer",
-      company: "Tech Innovations Inc.",
-      period: "2021 - Present",
+      title: "AI Engineer",
+      company: "Really Great Tech",
+      period: " Oct 2024 - Present",
       description:
-        "Leading the frontend development team in creating responsive, accessible web applications. Implemented design systems that improved development efficiency by 40%.",
+        "Learning and developing AI and LLM solutions, focusing on API development and integration with existing systems.",
     },
     {
-      title: "Web Developer",
-      company: "Digital Solutions Agency",
-      period: "2018 - 2021",
+      title: "Researcher",
+      company: "Datamaker Ghana Limited",
+      period: "Mar 2024 - Jun 2024",
       description:
-        "Developed and maintained client websites and web applications. Collaborated with designers to implement pixel-perfect interfaces.",
-    },
-    {
-      title: "Junior Developer",
-      company: "StartUp Ventures",
-      period: "2016 - 2018",
-      description:
-        "Assisted in the development of web applications. Learned and implemented best practices in web development.",
-    },
+        "Conducted research for the creation of a Large Language Model.",
+    }
   ]
 
   const education = [
     {
-      degree: "Master of Computer Science",
-      institution: "Tech University",
-      year: "2016",
-      description: "Specialized in Human-Computer Interaction and Web Technologies.",
-    },
-    {
-      degree: "Bachelor of Science in Software Engineering",
-      institution: "State University",
-      year: "2014",
-      description: "Graduated with honors. Capstone project: Real-time Collaboration Platform.",
+      degree: "Bachelor Science in Computer Science",
+      institution: "University of Ghana",
+      year: "2024",
+      description: "First Class Honours",
     },
   ]
 
   const certifications = [
+     {
+      name: "Data Visualisation in Power BI",
+      issuer: "DataCamp",
+      year: "2025",
+    },
     {
-      name: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
+      name: "Building Recommendation Engines in Python",
+      issuer: "DataCamp",
+      year: "2023",
+    },
+    {
+      name: "Advanced Learning Algorithms",
+      issuer: "Coursera",
       year: "2022",
-    },
-    {
-      name: "Google Professional Cloud Developer",
-      issuer: "Google Cloud",
-      year: "2021",
-    },
-    {
-      name: "Certified Scrum Master",
-      issuer: "Scrum Alliance",
-      year: "2020",
     },
   ]
 
@@ -152,19 +158,34 @@ export default function PersonalWebsite() {
 
   const services = [
     {
-      title: "Web Development",
-      description: "Custom websites and web applications built with modern technologies and best practices.",
-      icon: Code,
+      title: "AI Model Development",
+      description: "Custom AI models built and fine-tuned for specific business needs using PyTorch, TensorFlow, and other frameworks.",
+      icon: Brain,
     },
     {
-      title: "UI/UX Design",
-      description: "User-centered design solutions that enhance user experience and drive engagement.",
-      icon: Palette,
+      title: "LLM Implementation",
+      description: "Integration of large language models (GPT, BERT, Llama) with proper prompt engineering for your applications.",
+      icon: Bot,
     },
     {
-      title: "Technical Consultation",
-      description: "Expert advice on technology stack, architecture, and development strategies.",
-      icon: Briefcase,
+      title: "Computer Vision Solutions",
+      description: "Custom vision models for object detection, image recognition, and video analysis tailored to your needs.",
+      icon: Cpu,
+    },
+    {
+      title: "Data Science & Analytics",
+      description: "Turn raw data into actionable insights through statistical modeling and advanced analytics techniques.",
+      icon: LineChart,
+    },
+    {
+      title: "MLOps & Deployment",
+      description: "Streamlined AI deployment pipelines using Docker, Kubernetes, and CI/CD with proper model monitoring.",
+      icon: Cloud,
+    },
+    {
+      title: "NLP Solutions",
+      description: "Text analysis, sentiment analysis, document processing, and conversational AI implementations.",
+      icon: SearchCode,
     },
   ]
 
@@ -255,7 +276,7 @@ export default function PersonalWebsite() {
         <div className="container flex h-14 items-center">
           <div className="mr-4 hidden md:flex">
             <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="hidden font-bold sm:inline-block">Alex Johnson</span>
+              <span className="hidden font-bold sm:inline-block">Prince Dugboryele</span>
             </Link>
             <nav className="flex items-center space-x-6 text-sm font-medium">
               <Link href="#about" className="transition-colors hover:text-foreground/80">
@@ -281,7 +302,7 @@ export default function PersonalWebsite() {
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <div className="w-full flex-1 md:w-auto md:flex-none">
               <Button variant="ghost" size="sm" asChild>
-                <Link href="mailto:alex@example.com">
+                <Link href="mailto:dugboryeleprince@gmail.com">
                   <Mail className="h-4 w-4" />
                 </Link>
               </Button>
@@ -294,22 +315,21 @@ export default function PersonalWebsite() {
       <section className="container px-4 py-24 md:py-32">
         <div className="flex flex-col items-center text-center space-y-8">
           <Avatar className="h-32 w-32">
-            <AvatarImage src="/placeholder.svg?height=128&width=128" alt="Alex Johnson" />
-            <AvatarFallback>AJ</AvatarFallback>
+            <AvatarImage src="/images/profile/Prince.png" alt="Prince Dugboryele" />
+            <AvatarFallback>PD</AvatarFallback>
           </Avatar>
           <div className="space-y-4">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-              Hi, I'm Alex Johnson
+              Prince Kojo Dugboryele
             </h1>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-              Full-stack developer and designer passionate about creating beautiful, functional web experiences. I love
-              turning ideas into reality through code and design.
+              I was living before I became a developer, you'll see life in my work.
             </p>
           </div>
           <div className="flex items-center space-x-4 text-sm text-muted-foreground">
             <div className="flex items-center space-x-1">
               <MapPin className="h-4 w-4" />
-              <span>San Francisco, CA</span>
+              <span>Accra, Ghana</span>
             </div>
             <div className="flex items-center space-x-1">
               <Calendar className="h-4 w-4" />
@@ -324,7 +344,7 @@ export default function PersonalWebsite() {
               <Link href="#contact">Get In Touch</Link>
             </Button>
             <Button variant="secondary" asChild>
-              <Link href="/resume.pdf" download>
+              <Link href="/Prince-Kojo-Dugboryele-Resume-.pdf" download>
                 <FileText className="mr-2 h-4 w-4" />
                 Download Resume
               </Link>
@@ -332,13 +352,20 @@ export default function PersonalWebsite() {
           </div>
           <div className="flex space-x-4">
             <Button variant="ghost" size="sm" asChild>
-              <Link href="https://github.com" target="_blank">
+              <Link href="https://github.com/pryyyynz" target="_blank">
                 <Github className="h-5 w-5" />
               </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="https://linkedin.com" target="_blank">
+              <Link href="https://www.linkedin.com/in/prince-dugboryele-990059215/" target="_blank">
                 <Linkedin className="h-5 w-5" />
+              </Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="https://x.com/pryyyynz" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                  <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5549 21H20.7996L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
+                </svg>
               </Link>
             </Button>
           </div>
@@ -351,18 +378,23 @@ export default function PersonalWebsite() {
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">About Me</h2>
           <div className="space-y-6 text-muted-foreground">
             <p className="text-lg">
-              I'm a passionate full-stack developer with over 5 years of experience creating digital experiences that
-              make a difference. My journey started with a curiosity about how things work on the web, and it has
-              evolved into a career dedicated to crafting beautiful, functional applications.
+              I'm an AI Engineer with a strong foundation in Computer Vision, Large Language Models (LLMs), 
+              and Data Science. I specialize in building end-to-end AI solutions—from data preprocessing and model 
+              development to deployment and monitoring.
             </p>
             <p className="text-lg">
-              When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or
-              capturing moments through photography. I believe in the power of technology to solve real-world problems
-              and create meaningful connections.
+              With expertise in developing deep learning models and implementing machine learning pipelines, 
+              I'm passionate about creating AI systems that solve real-world problems. I'm particularly interested 
+              in the intersection of computer vision and natural language processing.
+            </p>
+            <p className="text-lg">
+              When I'm not coding, you'll find me watching documentaries, 
+              listening to music, hiking, or simply enjoying quiet moments to 
+              stay grounded.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {skills.map((skill, index) => (
               <Card key={index} className="text-center">
                 <CardHeader className="pb-2">
@@ -388,7 +420,7 @@ export default function PersonalWebsite() {
             </p>
             <div className="mt-6">
               <Button asChild>
-                <Link href="/resume.pdf" download>
+                <Link href="/Prince-Kojo-Dugboryele-Resume-.pdf" download>
                   <FileText className="mr-2 h-4 w-4" />
                   Download Full Resume (PDF)
                 </Link>
@@ -472,28 +504,57 @@ export default function PersonalWebsite() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <Card key={index} className="overflow-hidden">
-                <div className="aspect-video relative overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform hover:scale-105"
-                  />
-                </div>
+                {project.embed ? (
+                  <div className="relative overflow-hidden">
+                    <Button variant="outline" size="sm" className="absolute top-2 right-2 z-10" asChild>
+                      <Link href={project.live} target="_blank">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Open Full View
+                      </Link>
+                    </Button>
+                    <div className="pb-[56.25%] relative h-0">
+                      <iframe 
+                        title={project.title}
+                        width="100%" 
+                        height="100%" 
+                        src={project.live}
+                        frameBorder="0"
+                        allowFullScreen={true}
+                        className="rounded-t-lg absolute top-0 left-0 w-full h-full"
+                        loading="lazy"
+                        style={{ border: "none" }}
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                      ></iframe>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="aspect-video relative overflow-hidden">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      fill
+                      className="object-contain transition-transform hover:scale-105"
+                    />
+                  </div>
+                )}
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
                     {project.title}
                     <div className="flex space-x-2">
-                      <Button variant="ghost" size="sm" asChild>
-                        <Link href={project.github} target="_blank">
-                          <Github className="h-4 w-4" />
-                        </Link>
-                      </Button>
-                      <Button variant="ghost" size="sm" asChild>
-                        <Link href={project.live} target="_blank">
-                          <ExternalLink className="h-4 w-4" />
-                        </Link>
-                      </Button>
+                      {project.github && (
+                        <Button variant="ghost" size="sm" asChild>
+                          <Link href={project.github} target="_blank">
+                            <Github className="h-4 w-4" />
+                          </Link>
+                        </Button>
+                      )}
+                      {project.live && !project.embed && (
+                        <Button variant="ghost" size="sm" asChild>
+                          <Link href={project.live} target="_blank">
+                            <ExternalLink className="h-4 w-4" />
+                          </Link>
+                        </Button>
+                      )}
                     </div>
                   </CardTitle>
                   <CardDescription>{project.description}</CardDescription>
@@ -515,22 +576,22 @@ export default function PersonalWebsite() {
 
       {/* Services Section */}
       <section id="services" className="container px-4 py-24 bg-muted/50">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">Services I Offer</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">AI & ML Services</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Professional services tailored to meet your digital needs and help your business grow online.
+              Expert AI engineering and machine learning solutions to transform your business with cutting-edge technology.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
-              <Card key={index} className="text-center">
+              <Card key={index} className="text-center h-full flex flex-col">
                 <CardHeader>
                   <service.icon className="h-12 w-12 mx-auto mb-4 text-primary" />
                   <CardTitle>{service.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow">
                   <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
               </Card>
@@ -552,12 +613,13 @@ export default function PersonalWebsite() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {photos.map((photo, index) => (
-              <div key={index} className="aspect-square relative overflow-hidden rounded-lg">
+              <div key={index} className="relative overflow-hidden rounded-lg h-[500px] flex items-center justify-center bg-muted/20">
                 <Image
                   src={photo || "/placeholder.svg"}
                   alt={`Gallery image ${index + 1}`}
-                  fill
-                  className="object-cover transition-transform hover:scale-105"
+                  width={400}
+                  height={600}
+                  className="max-w-full max-h-full transition-transform hover:scale-105 object-contain"
                 />
               </div>
             ))}
@@ -636,15 +698,23 @@ export default function PersonalWebsite() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button size="lg" asChild>
-              <Link href="mailto:alex@example.com">
+              <Link href="mailto:dugboryeleprince@gmail.com">
                 <Mail className="mr-2 h-4 w-4" />
                 Send Email
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="https://linkedin.com" target="_blank">
+              <Link href="https://www.linkedin.com/in/prince-dugboryele-990059215/" target="_blank">
                 <Linkedin className="mr-2 h-4 w-4" />
                 Connect on LinkedIn
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="https://x.com/pryyyynz" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="mr-2 h-4 w-4">
+                  <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5549 21H20.7996L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
+                </svg>
+                Follow on X
               </Link>
             </Button>
           </div>
@@ -652,14 +722,17 @@ export default function PersonalWebsite() {
           <Separator className="my-8" />
 
           <div className="flex justify-center space-x-6 text-sm text-muted-foreground">
-            <Link href="mailto:alex@example.com" className="hover:text-foreground transition-colors">
-              alex@example.com
+            <Link href="mailto:dugboryeleprince@gmail.com" className="hover:text-foreground transition-colors">
+              dugboryeleprince@gmail.com
             </Link>
-            <Link href="https://github.com" className="hover:text-foreground transition-colors">
+            <Link href="https://github.com/pryyyynz" target="_blank" className="hover:text-foreground transition-colors">
               GitHub
             </Link>
-            <Link href="https://linkedin.com" className="hover:text-foreground transition-colors">
+            <Link href="https://www.linkedin.com/in/prince-dugboryele-990059215/" target="_blank" className="hover:text-foreground transition-colors">
               LinkedIn
+            </Link>
+            <Link href="https://x.com/pryyyynz" target="_blank" className="hover:text-foreground transition-colors">
+              X
             </Link>
           </div>
         </div>
@@ -670,7 +743,7 @@ export default function PersonalWebsite() {
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
           <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
             <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-              Built with Next.js and Tailwind CSS. © {new Date().getFullYear()} Alex Johnson.
+              Built with ❤️ in Ghana © {new Date().getFullYear()} Prince Dugboryele.
             </p>
           </div>
         </div>
