@@ -2,8 +2,9 @@
 
 import * as React from "react"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
-
+import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { Skeleton } from "./skeleton"
 
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
@@ -23,13 +24,32 @@ Avatar.displayName = AvatarPrimitive.Root.displayName
 const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
->(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Image
-    ref={ref}
-    className={cn("aspect-square h-full w-full", className)}
-    {...props}
-  />
-))
+>(({ className, ...props }, ref) => {
+  const [isLoading, setIsLoading] = useState(true)
+
+  return (
+    <>
+      {isLoading && (
+        <Skeleton
+          className={cn(
+            "absolute inset-0 h-full w-full rounded-full",
+            className
+          )}
+        />
+      )}
+      <AvatarPrimitive.Image
+        ref={ref}
+        onLoad={() => setIsLoading(false)}
+        className={cn(
+          "aspect-square h-full w-full transition-opacity duration-300",
+          isLoading ? "opacity-0" : "opacity-100",
+          className
+        )}
+        {...props}
+      />
+    </>
+  )
+})
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
 
 const AvatarFallback = React.forwardRef<
