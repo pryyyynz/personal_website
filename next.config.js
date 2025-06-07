@@ -5,8 +5,13 @@ const nextConfig = {
   // Don't set distDir here as it can cause issues with the GitHub Pages deployment
   images: {
     unoptimized: true, // Disable server-side image optimization for static exports
-    domains: [],
+    domains: ['www.kojoprince.me'],
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.kojoprince.me',
+        pathname: '/**',
+      },
       {
         protocol: 'http',
         hostname: 'localhost',
@@ -17,8 +22,9 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // Configure base path for GitHub Pages deployment
-  basePath: '/personal_website',
+  // Remove basePath since you're using a custom domain
+  basePath: '',
+  assetPrefix: '',
 }
 
 module.exports = nextConfig
