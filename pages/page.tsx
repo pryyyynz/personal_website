@@ -423,7 +423,7 @@ export default function PersonalWebsite() {
               <Link href="#contact">Get In Touch</Link>
             </Button>
             <Button className="w-full sm:w-auto" variant="secondary" asChild>
-              <Link href="/Prince-Kojo-Dugboryele-Resume-.pdf" download>
+              <Link href="/Prince-Kojo-Dugboryele-Resume.pdf" download>
                 <FileText className="mr-2 h-4 w-4" />
                 Download Resume
               </Link>
@@ -499,7 +499,7 @@ export default function PersonalWebsite() {
             </p>
             <div className="mt-6">
               <Button asChild>
-                <Link href="/Prince-Kojo-Dugboryele-Resume-.pdf" download>
+                <Link href="/Prince-Kojo-Dugboryele-Resume.pdf" download>
                   <FileText className="mr-2 h-4 w-4" />
                   Download Full Resume (PDF)
                 </Link>
