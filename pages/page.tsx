@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
+import { Image } from "@/components/ui/image"
+import { PowerBIDashboard } from "@/components/ui/power-bi-dashboard"
 
 interface Project {
   title: string
@@ -12,6 +14,7 @@ interface Project {
   github?: string
   live?: string
   embed?: boolean
+  isPowerBI?: boolean
 }
 import {
   Github,
@@ -40,7 +43,7 @@ import {
   Globe,
   SearchCode
 } from "lucide-react"
-import Image from "next/image"
+import NextImage from "next/image"
 import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
@@ -52,16 +55,17 @@ export default function PersonalWebsite() {
       description:
         "An interactive Power BI dashboard analyzing health data with custom visualizations and advanced analytics to identify key trends and insights.",
       image: "/placeholder.svg?height=200&width=300",
-      tags: ["Power BI", "Data Analysis", "Healthcare", "Data Visualization"],
-      live: "https://app.powerbi.com/reportEmbed?reportId=42ae3b64-3dc7-4ec2-b2b0-635b3372ec10&autoAuth=true&ctid=afb58802-ff7a-4bb1-ab21-367ff2ecfc8b&actionBarEnabled=true",
+      tags: ["Power BI", "Data Analysis", "Healthcare", "Data Visualization", "Dashboard", "Interactive"],
+      live: "https://app.powerbi.com/view?r=eyJrIjoiOTQwYjRhZWUtNjkwNy00YjhkLWE2YmItODdkYmQ0MWQ2ZjUwIiwidCI6ImFmYjU4ODAyLWZmN2EtNGJiMS1hYjIxLTM2N2ZmMmVjZmM4YiIsImMiOjZ9",
       embed: true,
+      isPowerBI: true,
     },
     {
       title: "Multi AI System",
       description:
         "Multi AI Assistant is your comprehensive Ghanaian AI Hub, designed to provide valuable information and tools tailored to the Ghanaian context.",
       image: "/images/gallery/multi.png",
-      tags: ["FastAPI", "Groq", "Chatbot", "Next.js"],
+      tags: ["FastAPI", "Groq", "Chatbot", "Next.js", "AI Assistant", "Ghana"],
       github: "https://github.com/pryyyynz/multi-ai-assistant",
       live: "https://services.multi-ai.software/",
     },
@@ -70,9 +74,27 @@ export default function PersonalWebsite() {
       description:
         "A web-based 3D visualization tool that leverages AI to create immersive experiences from images, enhancing understanding of spatial data.",
       image: "/images/gallery/vision.png",
-      tags: ["MiDas", "Three.js", "Tensorflow.js", "FastAPI"],
+      tags: ["MiDaS", "Three.js", "Tensorflow.js", "FastAPI", "OpenCV", "PyTorch"],
       github: "https://github.com/pryyyynz/Vis3D-ui",
       live: "https://vision.multi-ai.software/",
+    },
+    {
+      title: "Developer Optimal Hours",
+      description:
+        "A data science project analyzing optimal working hours for developers to maximize productivity and maintain well-being.",
+      image: "/images/gallery/developer.png",
+      tags: ["Hugging Face", "Gradio", "XGBoost", "Work-Life Balance", "Jypyter Notebook"],
+      live: "https://huggingface.co/spaces/pryyyynz/Optimal-Developer-Capacity",
+      github: "https://deepnote.com/workspace/Jaalnet-cf3c7f6e-8714-48bc-b1c6-f3245786cf76/project/Optimal-Work-Capacity-1a595f94-7798-4e91-8650-d6a0f215bbaa/notebook/optimalcapacity-3fa2c3f9e74b42deb362513747358aaa",
+    },
+    {
+      title: "Holy Query",
+      description:
+        "A Streamlit application for searching and querying religious texts from the Bible and Quran using natural language processing.",
+      image: "/images/gallery/holyquery.png",
+      tags: ["Streamlit", "LLM", "LangChain", "Religious Text Analysis", "Anthropic"],
+      github: "https://github.com/pryyyynz/HolyQuery",
+      live: "https://holyquery.streamlit.app/",
     },
   ]
 
@@ -118,7 +140,7 @@ export default function PersonalWebsite() {
   ]
 
   const certifications = [
-     {
+    {
       name: "Data Visualisation in Power BI",
       issuer: "DataCamp",
       year: "2025",
@@ -316,7 +338,7 @@ export default function PersonalWebsite() {
               </Link>
             </Button>
           </div>
-          
+
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center">
             <Button variant="ghost" size="sm" className="mr-2" asChild>
@@ -325,10 +347,10 @@ export default function PersonalWebsite() {
               </Link>
             </Button>
             <div className="relative">
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="px-2" 
+              <Button
+                variant="ghost"
+                size="sm"
+                className="px-2"
                 onClick={() => {
                   const mobileMenu = document.getElementById('mobile-menu');
                   if (mobileMenu) {
@@ -435,18 +457,18 @@ export default function PersonalWebsite() {
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">About Me</h2>
           <div className="space-y-6 text-muted-foreground text-center">
             <p className="text-lg mx-auto">
-              I'm an AI Engineer with a strong foundation in Computer Vision, Large Language Models (LLMs), 
-              and Data Science. I specialize in building end-to-end AI solutions—from data preprocessing and model 
+              I'm an AI Engineer with a strong foundation in Computer Vision, Large Language Models (LLMs),
+              and Data Science. I specialize in building end-to-end AI solutions—from data preprocessing and model
               development to deployment and monitoring.
             </p>
             <p className="text-lg mx-auto">
-              With expertise in developing deep learning models and implementing machine learning pipelines, 
-              I'm passionate about creating AI systems that solve real-world problems. I'm particularly interested 
+              With expertise in developing deep learning models and implementing machine learning pipelines,
+              I'm passionate about creating AI systems that solve real-world problems. I'm particularly interested
               in the intersection of computer vision and natural language processing.
             </p>
             <p className="text-lg mx-auto">
-              When I'm not coding, you'll find me watching documentaries, 
-              listening to music, hiking, or simply enjoying quiet moments to 
+              When I'm not coding, you'll find me watching documentaries,
+              listening to music, hiking, or simply enjoying quiet moments to
               stay grounded.
             </p>
           </div>
@@ -560,8 +582,18 @@ export default function PersonalWebsite() {
 
           <div className="grid gap-6 sm:gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden flex flex-col">
-                {project.embed ? (
+              <Card
+                key={index}
+                className={`overflow-hidden flex flex-col ${project.isPowerBI ? 'md:col-span-2 lg:col-span-2' : ''}`}
+              >
+                {project.embed && project.isPowerBI ? (
+                  <PowerBIDashboard
+                    embedUrl={project.live}
+                    title={project.title}
+                    className="h-full"
+                    aspectRatio="custom"
+                  />
+                ) : project.embed ? (
                   <div className="relative overflow-hidden">
                     <Button variant="outline" size="sm" className="absolute top-2 right-2 z-10" asChild>
                       <Link href={project.live} target="_blank">
@@ -570,10 +602,10 @@ export default function PersonalWebsite() {
                       </Link>
                     </Button>
                     <div className="pb-[56.25%] relative h-0">
-                      <iframe 
+                      <iframe
                         title={project.title}
-                        width="100%" 
-                        height="100%" 
+                        width="100%"
+                        height="100%"
                         src={project.live}
                         frameBorder="0"
                         allowFullScreen={true}
@@ -585,12 +617,13 @@ export default function PersonalWebsite() {
                     </div>
                   </div>
                 ) : (
-                  <div className="aspect-video relative overflow-hidden">
+                  <div className="aspect-video relative overflow-hidden h-[200px]">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      fill
-                      className="object-contain transition-transform hover:scale-105"
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-full transition-transform hover:scale-105"
                     />
                   </div>
                 )}
